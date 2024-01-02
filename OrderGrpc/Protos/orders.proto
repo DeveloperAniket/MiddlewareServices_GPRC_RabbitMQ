@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "OrderGrpc";
+
+package order;
+
+// The greeting service definition.
+service Order {
+  // place a new order
+  rpc PlaceOrder (OrderRequest) returns (OrderResponse);
+
+  // Update exiting order
+  rpc UpdateOrder (OrderRequest) returns (OrderResponse);
+}
+ 
+message OrderRequest {
+    OrderDetails orderDetails = 1;
+}
+
+message OrderResponse {
+    OrderDetails orderDetails = 1;
+}
+
+message OrderDetails {
+    optional int32 order_id = 1;
+    string order_address = 2;
+    repeated ProductDetails product_details = 3;
+}
+
+message ProductDetails {
+    string product_id = 1;
+	string product_title = 2;
+	string description = 3;
+    int32 quantity = 4;
+    double price = 5; 
+}
