@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/MiddlewareServices-NAGP
+/ProductAPI/bin/Debug/net8.0
+/OrderGrpc/bin/Debug/net8.0
