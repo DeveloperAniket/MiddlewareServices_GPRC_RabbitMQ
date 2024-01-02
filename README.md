@@ -1,0 +1,2 @@
+# MiddlewareServices_GPRC_RabbitMQ
+MiddlewareServices build with GPRC RabbitMQ
