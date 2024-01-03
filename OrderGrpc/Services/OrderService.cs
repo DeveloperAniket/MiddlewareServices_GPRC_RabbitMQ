@@ -24,7 +24,7 @@ namespace OrderGrpc.Services
             _logger.LogInformation($"GRPC method: {context.Method} recieved from :{context.Peer}. Host: {context.Host} ");
             var orderDetails = _orderRepository.PlaceOrder(request.OrderDetails);
 
-            //await _rabbitMqService.RaiseOrderCreate(orderDetails);
+            await _rabbitMqService.RaiseOrderCreate(orderDetails);
 
             // Send reply to GRPC Client
             return new OrderResponse
@@ -33,26 +33,18 @@ namespace OrderGrpc.Services
             };
         }
 
-        //public override Task<OrderReply> UpdateOrder(OrderRequest request, ServerCallContext context)
-        //{
-        //    _logger.LogInformation($"RPC method: {context.Method} recieved from :{context.Peer}. Host: {context.Host} ");
-        //    var orderDetails = _orderRepository.UpdateOrder(request.OrderDetails);
+        public override async Task<OrderResponse> UpdateOrder(OrderRequest request, ServerCallContext context)
+        {
+            _logger.LogInformation($"RPC method: {context.Method} recieved from :{context.Peer}. Host: {context.Host} ");
+            var orderDetails = _orderRepository.UpdateOrder(request.OrderDetails);
 
-        //    // Connect to RabbitMQ and push the message to exchange
-        //    using var model = _rabbitMqConnection.CreateModel();
-        //    model.QueueDeclare("OrderUpdateQueue", durable: true, exclusive: false, autoDelete: false);
-        //    model.ExchangeDeclare("TopicExchange", ExchangeType.Topic, durable: true, autoDelete: false);
-        //    model.QueueBind("OrderUpdateQueue", "TopicExchange", "OrderUpdated");
-
-        //    var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(orderDetails));
-        //    model.BasicPublish("TopicExchange", "OrderUpdated", null, body);
-
-        //    model.Close();
-        //    // Send reply to GRPC Client
-        //    return Task.FromResult(new OrderReply
-        //    {
-        //        OrderDetails = orderDetails
-        //    });
-        //}
+            await _rabbitMqService.RaiseOrderUpdate(orderDetails);
+            
+            // Send reply to GRPC Client
+            return new OrderResponse
+            {
+                OrderDetails = orderDetails
+            };
+        }
     }
 }

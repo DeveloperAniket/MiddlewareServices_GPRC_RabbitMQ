@@ -31,5 +31,20 @@ namespace OrderGrpc.Services.RabbitMQ
 
             await Task.CompletedTask;
         }
+
+        public async Task RaiseOrderUpdate(OrderDetails orderDetails)
+        {
+            // Connect to RabbitMQ and push the message to exchange
+            using var model = _connection.CreateModel();
+            model.QueueDeclare("OrderUpdateQueue", durable: true, exclusive: false, autoDelete: false);
+            model.ExchangeDeclare("TopicExchange", ExchangeType.Topic, durable: true, autoDelete: false);
+            model.QueueBind("OrderUpdateQueue", "TopicExchange", "OrderUpdated");
+
+            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(orderDetails));
+            model.BasicPublish("TopicExchange", "OrderUpdated", null, body);
+
+            model.Close();
+            await Task.CompletedTask;
+        }
     }
 }

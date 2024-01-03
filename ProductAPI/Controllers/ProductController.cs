@@ -1,5 +1,6 @@
 ﻿
 using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using JsonDb;
 using Microsoft.AspNetCore.Mvc;
 using ProductAPI.Models;
@@ -87,7 +88,7 @@ namespace ProductAPI.Controllers
         [HttpPost("order/update")]
         public IActionResult UpdateOrder(ProductOrderDto orderDetaildto)
         {
-            if (orderDetaildto == null || string.IsNullOrEmpty(orderDetaildto.OrderId?.Trim()) || string.IsNullOrEmpty(orderDetaildto.OrderAddress.Trim()) || !orderDetaildto.ProductQuantities.Any())
+            if (orderDetaildto == null || orderDetaildto.OrderId is null or < 1 || string.IsNullOrEmpty(orderDetaildto.OrderAddress.Trim()) || !orderDetaildto.ProductQuantities.Any())
             {
                 return BadRequest("OrderId or OrderAddress or Product Details missing");
             }
@@ -117,6 +118,7 @@ namespace ProductAPI.Controllers
                     {
                         OrderDetails = new OrderDetails()
                         {
+                            OrderId = orderDetaildto.OrderId.Value,
                             OrderAddress = orderDetaildto.OrderAddress,
                         },
                     };
@@ -151,5 +153,7 @@ namespace ProductAPI.Controllers
             var products = await db.GetCollectionAsync<Product>("products");
             return products;
         }
+         
+        
     }
 }

@@ -3,5 +3,11 @@
 ################################################################################
 
 /.vs/MiddlewareServices-NAGP
-/ProductAPI/bin/Debug/net8.0
-/OrderGrpc/bin/Debug/net8.0
+/ProductAPI/bin/*
+/OrderGrpc/bin/*
+/ProductAPI/obj
+/OrderGrpc/obj
+/NotificationService2/obj
+/NotificationService1/bin/*
+/NotificationService1/obj
+/NotificationService2/bin/*

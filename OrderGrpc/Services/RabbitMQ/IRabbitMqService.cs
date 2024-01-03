@@ -5,5 +5,7 @@ namespace OrderGrpc.Services.RabbitMQ
     public interface IRabbitMqService
     {
         Task RaiseOrderCreate(OrderDetails orderDetails);
+
+        Task RaiseOrderUpdate(OrderDetails orderDetails);
     }
 }
