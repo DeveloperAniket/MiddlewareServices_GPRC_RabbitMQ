@@ -23,3 +23,11 @@ Following softwares should be installed
 4. Open ProductApi app window. copy port-number of the ProductApi swagger. 
  ``` example :: 'http://localhost:5251/Swagger' ```
 ![Alt text](image.png)
+
+
+# Product API:
+| API Method        | Method Type           | Details  |  
+| :------------- |:-------------| :------------- | 
+| product/Products     | HTTP GET | Get All Products | 
+| product/order/create      |  HTTP POST      |   Create New Order |
+| product/order/update | HTTP POST      |   Update Existing Order |
