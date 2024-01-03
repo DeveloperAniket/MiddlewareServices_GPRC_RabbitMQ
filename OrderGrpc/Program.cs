@@ -12,7 +12,7 @@ namespace OrderGrpc
             // Add services to the container.
             builder.Services.AddGrpc();
             builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
-            //builder.Services.AddSingleton<IRabbitMqService, null>();
+            builder.Services.AddSingleton<IRabbitMqService, RabbitMqService>();
             builder.Services.AddLocalJsonDb(options =>
             {
                 options.DbPath = Path.Combine(Environment.CurrentDirectory, "Db");

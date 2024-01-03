@@ -13,11 +13,11 @@ namespace OrderGrpc.Services
         private readonly IOrderRepository _orderRepository;
         private readonly IRabbitMqService _rabbitMqService;
 
-        public OrderService(ILogger<OrderService> logger, IOrderRepository orderRepository , IJsonDbFactory jsonDbFactory)
+        public OrderService(ILogger<OrderService> logger, IOrderRepository orderRepository, IJsonDbFactory jsonDbFactory, IRabbitMqService rabbitMqService)
         {
             _logger = logger;
             _orderRepository = orderRepository;
-            //_rabbitMqService = rabbitMqService;
+            _rabbitMqService = rabbitMqService;
         }
 
         public override async Task<OrderResponse> PlaceOrder(OrderRequest request, ServerCallContext context)
@@ -25,7 +25,7 @@ namespace OrderGrpc.Services
             _logger.LogInformation($"GRPC method: {context.Method} recieved from :{context.Peer}. Host: {context.Host} ");
             var orderDetails = await _orderRepository.PlaceOrder(request.OrderDetails);
 
-            //await _rabbitMqService.RaiseOrderCreate(orderDetails);
+            await _rabbitMqService.RaiseOrderCreate(orderDetails);
 
             // Send reply to GRPC Client
             return new OrderResponse
@@ -40,7 +40,7 @@ namespace OrderGrpc.Services
             _logger.LogInformation($"RPC method: {context.Method} recieved from :{context.Peer}. Host: {context.Host} ");
             var orderDetails = await _orderRepository.UpdateOrder(request.OrderDetails);
 
-          //  await _rabbitMqService.RaiseOrderUpdate(orderDetails);
+            await _rabbitMqService.RaiseOrderUpdate(orderDetails);
 
             // Send reply to GRPC Client
             return new OrderResponse
