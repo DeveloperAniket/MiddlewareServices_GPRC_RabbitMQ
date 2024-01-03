@@ -2,7 +2,7 @@
 {
     public class ProductOrderDto
     {
-        public int? OrderId { get; set; }
+        public string? OrderId { get; set; }
         public string OrderAddress { get; set; }
         public List<ProductQuantityDto> ProductQuantities { get; set; }
     }

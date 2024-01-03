@@ -88,7 +88,7 @@ namespace ProductAPI.Controllers
         [HttpPost("order/update")]
         public IActionResult UpdateOrder(ProductOrderDto orderDetaildto)
         {
-            if (orderDetaildto == null || orderDetaildto.OrderId is null or < 1 || string.IsNullOrEmpty(orderDetaildto.OrderAddress.Trim()) || !orderDetaildto.ProductQuantities.Any())
+            if (orderDetaildto == null || string.IsNullOrEmpty(orderDetaildto.OrderId?.Trim()) || string.IsNullOrEmpty(orderDetaildto.OrderAddress.Trim()) || !orderDetaildto.ProductQuantities.Any())
             {
                 return BadRequest("OrderId or OrderAddress or Product Details missing");
             }
@@ -118,16 +118,21 @@ namespace ProductAPI.Controllers
                     {
                         OrderDetails = new OrderDetails()
                         {
-                            OrderId = orderDetaildto.OrderId.Value,
+                            OrderId = orderDetaildto.OrderId,
                             OrderAddress = orderDetaildto.OrderAddress,
                         },
                     };
                     orderRequest.OrderDetails.ProductDetails.AddRange(productDetails);
 
-                    OrderResponse reply;
+                    
                     try
                     {
-                        reply = _orderClient.UpdateOrder(orderRequest);
+                        var reply = _orderClient.UpdateOrder(orderRequest);
+
+                        if (reply == null || reply.OrderDetails == null)
+                        {
+                            return BadRequest("Order Not Found");
+                        }
                         return Ok(new { order = reply.OrderDetails, Message = $"Product Order updated. OrderId: {reply.OrderDetails.OrderId}" });
                     }
                     catch (Exception ex)
@@ -153,7 +158,7 @@ namespace ProductAPI.Controllers
             var products = await db.GetCollectionAsync<Product>("products");
             return products;
         }
-         
-        
+
+
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface IOrderRepository
     {
-        public OrderDetails PlaceOrder(OrderDetails orderDetails);
-        public OrderDetails UpdateOrder(OrderDetails orderDetails);
+        public Task<OrderDetails> PlaceOrder(OrderDetails orderDetails);
+        public Task<OrderDetails> UpdateOrder(OrderDetails orderDetails);
     }
 }

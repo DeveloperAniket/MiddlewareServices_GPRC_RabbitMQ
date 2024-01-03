@@ -22,7 +22,7 @@ message OrderResponse {
 }
 
 message OrderDetails {
-    optional int32 order_id = 1;
+    optional string order_id = 1;
     string order_address = 2;
     repeated ProductDetails product_details = 3;
 }
