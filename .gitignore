@@ -11,3 +11,6 @@
 /NotificationService1/bin/*
 /NotificationService1/obj
 /NotificationService2/bin/*
+/.vs/ProjectEvaluation
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
