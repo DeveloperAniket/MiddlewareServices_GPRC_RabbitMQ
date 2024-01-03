@@ -79,3 +79,44 @@ C:\Users\aniketsamanta\Documents\OneDrive (DND)\OneDrive - Nagarro\NAGP\grpc and
 C:\Users\aniketsamanta\Documents\OneDrive (DND)\OneDrive - Nagarro\NAGP\grpc and rabbitmq\MiddlewareServices-NAGP\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.pdb
 C:\Users\aniketsamanta\Documents\OneDrive (DND)\OneDrive - Nagarro\NAGP\grpc and rabbitmq\MiddlewareServices-NAGP\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.genruntimeconfig.cache
 C:\Users\aniketsamanta\Documents\OneDrive (DND)\OneDrive - Nagarro\NAGP\grpc and rabbitmq\MiddlewareServices-NAGP\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ref\ProductAPI.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\appsettings.Development.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\appsettings.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\JsonDatabase\products.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\ProductAPI.exe
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\ProductAPI.deps.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\ProductAPI.runtimeconfig.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\ProductAPI.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\ProductAPI.pdb
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Google.Protobuf.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Grpc.Core.Api.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Grpc.Net.Client.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Grpc.Net.Common.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\jsondb.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\jsondb.core.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.csproj.AssemblyReference.cache
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.AssemblyInfoInputs.cache
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.AssemblyInfo.cs
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.csproj.CoreCompileInputs.cache
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.sourcelink.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets.build.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets.development.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets\msbuild.ProductAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.ProductAPI.props
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ProductAPI.props
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ProductAPI.props
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\scopedcss\bundle\ProductAPI.styles.css
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.csproj.CopyComplete
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\refint\ProductAPI.dll
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.pdb
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ProductAPI.genruntimeconfig.cache
+D:\Code\MiddlewareServices_GPRC_RabbitMQ\ProductAPI\obj\Debug\net8.0\ref\ProductAPI.dll

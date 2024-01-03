@@ -1181,19 +1181,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aniketsamanta\\.nuget\\packages\\": {}
+    "C:\\Users\\ianik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aniketsamanta\\Documents\\OneDrive (DND)\\OneDrive - Nagarro\\NAGP\\grpc and rabbitmq\\MiddlewareServices-NAGP\\MiddlewareServices_GPRC_RabbitMQ\\ProductAPI\\ProductAPI.csproj",
+      "projectUniqueName": "D:\\Code\\MiddlewareServices_GPRC_RabbitMQ\\ProductAPI\\ProductAPI.csproj",
       "projectName": "ProductAPI",
-      "projectPath": "C:\\Users\\aniketsamanta\\Documents\\OneDrive (DND)\\OneDrive - Nagarro\\NAGP\\grpc and rabbitmq\\MiddlewareServices-NAGP\\MiddlewareServices_GPRC_RabbitMQ\\ProductAPI\\ProductAPI.csproj",
-      "packagesPath": "C:\\Users\\aniketsamanta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aniketsamanta\\Documents\\OneDrive (DND)\\OneDrive - Nagarro\\NAGP\\grpc and rabbitmq\\MiddlewareServices-NAGP\\MiddlewareServices_GPRC_RabbitMQ\\ProductAPI\\obj\\",
+      "projectPath": "D:\\Code\\MiddlewareServices_GPRC_RabbitMQ\\ProductAPI\\ProductAPI.csproj",
+      "packagesPath": "C:\\Users\\ianik\\.nuget\\packages\\",
+      "outputPath": "D:\\Code\\MiddlewareServices_GPRC_RabbitMQ\\ProductAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aniketsamanta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ianik\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1201,9 +1201,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://artifactory.coxautoinc.com/artifactory/api/nuget/v3/iss-nuget-local": {},
-        "https://artifactory.coxautoinc.com/artifactory/api/nuget/v3/vauto-nuget": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {

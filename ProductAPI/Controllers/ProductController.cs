@@ -8,6 +8,7 @@ using System.Data;
 namespace ProductAPI.Controllers
 {
     [ApiController]
+    [Route("product")]
     public class ProductController : ControllerBase
     {
         private readonly ILogger<ProductController> _logger;
@@ -21,18 +22,24 @@ namespace ProductAPI.Controllers
             db = jsonDbFactory.GetJsonDb();
         }
 
-        [HttpPost("PlaceOrder")]
+        [HttpPost("order/create")]
         public IActionResult PlaceOrder(ProductOrderDto orderDetaildto)
         {
+            if (orderDetaildto == null || string.IsNullOrEmpty(orderDetaildto.OrderAddress.Trim()) || !orderDetaildto.ProductQuantities.Any())
+            {
+                return BadRequest("OrderAddress or Product Details missing");
+            }
+
+
             var products = db.GetCollectionAsync<Product>("products").Result.Where(x => orderDetaildto.ProductQuantities.Exists(p => p.ProductId == x.Id));
-            if (orderDetaildto != null && products.Any())
+            if (products.Any())
             {
                 var productDetails = new RepeatedField<ProductDetails>();
                 orderDetaildto.ProductQuantities.ForEach(x =>
                 {
 
                     var product = products.FirstOrDefault(p => p.Id == x.ProductId);
-                    if (product != null)
+                    if (product != null && x.Quantity > 0)
                     {
                         var pd = new ProductDetails();
                         pd.ProductId = product.Id.ToString();
@@ -43,52 +50,102 @@ namespace ProductAPI.Controllers
                         productDetails.Add(pd);
                     }
                 });
-                var orderRequest = new OrderRequest
+                if (productDetails.Any())
                 {
-                    OrderDetails = new OrderDetails()
+                    var orderRequest = new OrderRequest
                     {
-                        OrderAddress = orderDetaildto.OrderAddress,
-                    },
-                };
-                orderRequest.OrderDetails.ProductDetails.AddRange(productDetails);
-                var reply = _orderClient.PlaceOrder(orderRequest);
-                return Ok(new { order = reply.OrderDetails, Message = $"Product Order Placed with Id: {reply.OrderDetails.OrderId}" });
+                        OrderDetails = new OrderDetails()
+                        {
+                            OrderAddress = orderDetaildto.OrderAddress,
+                        },
+                    };
+                    orderRequest.OrderDetails.ProductDetails.AddRange(productDetails);
+                    OrderResponse reply;
+                    try
+                    {
+                        reply = _orderClient.PlaceOrder(orderRequest);
+                        return Ok(new { order = reply.OrderDetails, Message = $"Product Order Placed with Id: {reply.OrderDetails.OrderId}" });
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "OrderClient Server Issue");
+                        throw new Exception("OrderClient Server Issue");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"No Product found to place order.");
+                }
+
             }
-
-            return BadRequest();
-
-            return Ok();
+            else
+            {
+                return BadRequest("Product not found");
+            }
         }
 
-        //[HttpPost("UpdateOrder")]
-        //public IActionResult UpdateOrder(int orderId, int productId, string shippingAddress, int quantity)
-        //{
-        //    var product = db.GetCollectionAsync<Product>("products").Result.SingleOrDefault(x => x.Id == productId);
-        //    if (product != null)
-        //    {
-        //        var orderRequest = new OrderRequest
-        //        {
-        //            OrderDetails = new OrderDetails
-        //            {
-        //                OrderId = orderId,
-        //                Color = product.color,
-        //                Description = product.Description,
-        //                OrderQuantity = quantity,
-        //                ProductName = product.Name,
-        //                ShipAddress = shippingAddress,
-        //                UnitPrice = product.Price
-        //            }
-        //        };
-        //        var reply = _orderProcessingClient.UpdateOrder(orderRequest);
-        //        return Ok(new { order = reply.OrderDetails, Message = $"Order Updated" });
-        //    }
-        //    else
-        //    {
-        //        return BadRequest($"The Prodcut with ID:{productId} does not exist.");
-        //    }
-        //}
+        [HttpPost("order/update")]
+        public IActionResult UpdateOrder(ProductOrderDto orderDetaildto)
+        {
+            if (orderDetaildto == null || string.IsNullOrEmpty(orderDetaildto.OrderId?.Trim()) || string.IsNullOrEmpty(orderDetaildto.OrderAddress.Trim()) || !orderDetaildto.ProductQuantities.Any())
+            {
+                return BadRequest("OrderId or OrderAddress or Product Details missing");
+            }
 
-        [HttpGet("GetAll")]
+            var products = db.GetCollectionAsync<Product>("products").Result.Where(x => orderDetaildto.ProductQuantities.Exists(p => p.ProductId == x.Id));
+            if (products.Any())
+            {
+                var productDetails = new RepeatedField<ProductDetails>();
+                orderDetaildto.ProductQuantities.ForEach(x =>
+                {
+                    var product = products.FirstOrDefault(p => p.Id == x.ProductId);
+                    if (product != null && x.Quantity > 0)
+                    {
+                        var pd = new ProductDetails();
+                        pd.ProductId = product.Id.ToString();
+                        pd.Description = product.Description;
+                        pd.ProductTitle = product.Title;
+                        pd.Price = product.Price;
+                        pd.Quantity = x.Quantity;
+                        productDetails.Add(pd);
+                    }
+                });
+
+                if (productDetails.Any())
+                {
+                    var orderRequest = new OrderRequest
+                    {
+                        OrderDetails = new OrderDetails()
+                        {
+                            OrderAddress = orderDetaildto.OrderAddress,
+                        },
+                    };
+                    orderRequest.OrderDetails.ProductDetails.AddRange(productDetails);
+
+                    OrderResponse reply;
+                    try
+                    {
+                        reply = _orderClient.UpdateOrder(orderRequest);
+                        return Ok(new { order = reply.OrderDetails, Message = $"Product Order updated. OrderId: {reply.OrderDetails.OrderId}" });
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "OrderClient Server Issue");
+                        throw new Exception("OrderClient Server Issue");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"No Product found to place order.");
+                }
+            }
+            else
+            {
+                return BadRequest("Product not found");
+            }
+        }
+
+        [HttpGet("products")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
             var products = await db.GetCollectionAsync<Product>("products");
